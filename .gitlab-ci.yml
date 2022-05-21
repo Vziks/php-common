@@ -1,0 +1,14 @@
+image: docker:stabile
+
+variables:
+    IMAGE_NAME: "php-common:7.4"
+
+services:
+    - docker:20.10.16-dind
+
+build_image:
+    script:
+        - docker build -t vziks/$IMAGE_NAME .
+        - docker login -u vziks $DOCKER_HUB_TOKEN
+        - docker push vziks/$IMAGE_NAME
+
