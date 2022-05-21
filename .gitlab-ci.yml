@@ -9,6 +9,6 @@ services:
 build_image:
     script:
         - docker build -t vziks/$IMAGE_NAME .
-        - docker login -u vziks $DOCKER_HUB_TOKEN
+        - docker login -u vziks -p $DOCKER_HUB_TOKEN
         - docker push vziks/$IMAGE_NAME
 
