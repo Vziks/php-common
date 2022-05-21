@@ -37,7 +37,4 @@ RUN chmod g+w /usr/local/etc/php/conf.d/ \
     && chown www-data:staff /var/www \
     && echo 'www-data  ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/www-data
 
-RUN curl -sS https://get.symfony.com/cli/installer | bash
-RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
-
 WORKDIR /var/www
