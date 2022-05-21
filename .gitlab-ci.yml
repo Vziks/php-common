@@ -1,4 +1,4 @@
-image: docker:stabile
+image: docker:stable
 
 variables:
     IMAGE_NAME: "php-common:7.4"
