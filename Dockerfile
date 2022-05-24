@@ -3,7 +3,7 @@ FROM php:8.0
 MAINTAINER vziks@live.ru
 
 RUN apt-get update \
-    && apt-get install -y git unzip wget sudo libpng-dev libjpeg-dev libbz2-dev libicu-dev libmcrypt-dev libpq-dev libmagickwand-dev
+    && apt-get install -y git unzip wget sudo libpng-dev libjpeg-dev libbz2-dev libicu-dev libmcrypt-dev libpq-dev libmagickwand-dev libzip-dev zip
 
 RUN docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/include \
     && docker-php-ext-install bcmath \
@@ -18,7 +18,8 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/in
         pdo_pgsql \
         pgsql \
         soap \
-        sockets
+        sockets \
+        zip
 
 RUN pecl install Imagick && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
 RUN pecl install xdebug-beta && echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
