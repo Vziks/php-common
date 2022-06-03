@@ -1,11 +1,15 @@
-FROM php:7.4
+FROM php:7.3
 
 MAINTAINER vziks@live.ru
 
 RUN apt-get update \
-    && apt-get install -y git unzip wget sudo libpng-dev libjpeg-dev libbz2-dev libicu-dev libmcrypt-dev libpq-dev libmagickwand-dev
+    && apt-get install -y git unzip wget sudo libpng-dev libjpeg-dev libbz2-dev libicu-dev libmcrypt-dev libpq-dev libmagickwand-dev \
 
-RUN docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/include \
+RUN apt-get install -y gnupg \
+    && curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - \
+    && apt-get install -y nodejs npm
+
+RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install bcmath \
         bz2 \
         exif \
