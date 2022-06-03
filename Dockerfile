@@ -3,7 +3,7 @@ FROM php:7.3
 MAINTAINER vziks@live.ru
 
 RUN apt-get update \
-    && apt-get install -y ca-certificates gnupg curl git unzip wget sudo libpng-dev libjpeg-dev libbz2-dev libicu-dev libmcrypt-dev libpq-dev libmagickwand-dev
+    && apt-get install -y ca-certificates gnupg curl git apt-utils unzip wget sudo libpng-dev libjpeg-dev libbz2-dev libicu-dev libmcrypt-dev libpq-dev libmagickwand-dev
 
 RUN curl -L https://deb.nodesource.com/setup_14.x | bash \
     && apt-get update -yq \
