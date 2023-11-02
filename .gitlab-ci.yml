@@ -9,6 +9,9 @@ services:
 build_image:
     script:
         - docker build -t vziks/$IMAGE_NAME .
+        - docker build -t gl.devrepo2.ru:5050/docker/$IMAGE_NAME .
         - docker login -u vziks -p $DOCKER_HUB_TOKEN
+        - docker login gl.devrepo2.ru:5050
         - docker push vziks/$IMAGE_NAME
+        - docker push gl.devrepo2.ru:5050/docker/$IMAGE_NAME
 
