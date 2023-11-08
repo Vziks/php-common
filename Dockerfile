@@ -23,7 +23,7 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/in
 
 RUN pecl install Imagick && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini
 RUN pecl install xdebug-beta && echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
-RUN pecl install mcrypt-1.0.6 && echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
+RUN pecl install mcrypt-1.0.4 && echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
 RUN cd /usr/local/lib \
 	&& wget https://composer.github.io/installer.sig -O - -q | tr -d '\n' > installer.sig \
