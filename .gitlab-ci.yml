@@ -4,14 +4,10 @@ variables:
     IMAGE_NAME: "php-common:8.1"
 
 services:
-    - docker:20.10.16-dind
+    - docker:24.0.7-dind
 
 build_image:
     script:
         - docker build -t vziks/$IMAGE_NAME .
-        - docker build -t gl.devrepo2.ru:5050/docker/$IMAGE_NAME .
         - docker login -u vziks -p $DOCKER_HUB_TOKEN
-        - docker login gl.devrepo2.ru:5050 -u vziks -p $GITLAB_HUB_TOKEN
         - docker push vziks/$IMAGE_NAME
-        - docker push gl.devrepo2.ru:5050/docker/$IMAGE_NAME
-
