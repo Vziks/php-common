@@ -7,8 +7,6 @@ services:
     - docker:24.0.7-dind
 
 build_image:
-    variables:
-        IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
     script:
 #        - echo "$CI_REGISTRY_USER"
 #        - echo "$CI_REGISTRY_PASSWORD"
@@ -22,4 +20,4 @@ build_image:
         - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
         - echo $IMAGE_TAG
         - echo $CI_COMMIT_TAG
-        - docker push $IMAGE_TAG
+        - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
